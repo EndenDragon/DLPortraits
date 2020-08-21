@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>龙约立绘查看/拼豆</title>
+    <title>Dragalia Lost Portraits</title>
     <link rel="stylesheet" type="text/css" href="image-picker/image-picker.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
@@ -60,12 +60,12 @@
     <div id="function-area">
         <div>
             <span class="inlineBlock">
-                <label for="chara-select">立绘ID</label>
+                <label for="chara-select">Select</label>
                 <select class = "chara-select" id = "chara-select">
                     <option></option>
                 </select>
                 <br>
-                <button id="load-btn">载入立绘数据</button>
+                <button id="load-btn">Load</button>
                 <span id="log-text" style="font-size: 10px; color: teal;"></span>
             </span>
         </div>
@@ -73,12 +73,12 @@
         <br>
 
         <div class="picker" id="picker">
-            <label for="face-select">请选择面部表情：</label>
+            <label for="face-select">Select facial expression：</label>
             <div id="face-area">
                 <select class='face-select' id='face-select'></select>
             </div>
             <br>
-            <label for="mouth-select">请选择嘴部表情：</label>
+            <label for="mouth-select">Select mouth expression：</label>
             <div id="mouth-area">
                 <select class='mouth-select' id='mouth-select'></select>
             </div>
@@ -88,9 +88,9 @@
     </div>
     <div id="canvas-area">
         <div id="canvas-btn">
-            <button id="reset-btn">恢复默认表情</button>
-            <button id="download-btn">下载图像</button>
-            <span id="note-text" style="font-size: 10px;"> 提示：可以通过拖拽来移动立绘。 </span>
+            <button id="reset-btn">Reset to Default</button>
+            <button id="download-btn">Download Image</button>
+            <span id="note-text" style="font-size: 10px;"> Tip: You can move the drawing by dragging. </span>
         </div>
         <br>
         <div id="canvas-canvas">
@@ -139,12 +139,12 @@
                         document.getElementById("chara-select").appendChild(option);
                     }
                     $('select.chara-select').select2({
-                        placeholder: "输入关键字以查询",
+                        placeholder: "Enter keywords to query",
                         allowClear: true
                     });
                 }).catch(function(error) {
                     console.log(error);
-                    document.getElementById("log-text").innerText = `载入立绘文件表失败，请查看控制台。刷新网页以重新载入。`;
+                    document.getElementById("log-text").innerText = `Failed to load art file, please check the console. Refresh the page to reload。`;
                 });
         }
 
@@ -187,12 +187,12 @@
             // load image
             baseImg.src = `${githubPrefix}${portraitPath}${imgID}/${imgID}_base.png`;
             baseImg.onload = function() {
-                logText.innerText = `${imgID}已成功载入。`;
+                logText.innerText = `${imgID} Successfully loaded.`;
                 ctx.drawImage(baseImg, 0, 0);
                 loadJsonData();
             }
             baseImg.onerror = function() {
-                logText.innerText = `载入立绘${imgID}图像数据失败，请查看控制台。`;
+                logText.innerText = `Failed to load image data of ID ${imgID}, please check the console.`;
                 loaded = false;
             }
         }
@@ -215,7 +215,7 @@
                     loadOptions();
                 }).catch(function(error) {
                     console.log(error);
-                    logText.innerText = `载入立绘${imgID}数据表失败，请查看控制台。`;
+                    logText.innerText = `Failed to load the ID ${imgID} data table, please check the console.`;
                     loaded = false;
                 });
         }
